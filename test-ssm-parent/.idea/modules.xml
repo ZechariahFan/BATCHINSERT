@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/test-ssm-common/test-ssm-common.iml" filepath="$PROJECT_DIR$/test-ssm-common/test-ssm-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test-ssm-manager/test-ssm-interface/test-ssm-interface.iml" filepath="$PROJECT_DIR$/test-ssm-manager/test-ssm-interface/test-ssm-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test-ssm-manager/test-ssm-manager.iml" filepath="$PROJECT_DIR$/test-ssm-manager/test-ssm-manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test-ssm-manager/test-ssm-mapper/test-ssm-mapper.iml" filepath="$PROJECT_DIR$/test-ssm-manager/test-ssm-mapper/test-ssm-mapper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test-ssm-parent.iml" filepath="$PROJECT_DIR$/test-ssm-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test-ssm-manager/test-ssm-pojo/test-ssm-pojo.iml" filepath="$PROJECT_DIR$/test-ssm-manager/test-ssm-pojo/test-ssm-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test-ssm-manager/test-ssm-service/test-ssm-service.iml" filepath="$PROJECT_DIR$/test-ssm-manager/test-ssm-service/test-ssm-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test-ssm-manager/test-ssm-web/test-ssm-web.iml" filepath="$PROJECT_DIR$/test-ssm-manager/test-ssm-web/test-ssm-web.iml" />
+    </modules>
+  </component>
+</project>

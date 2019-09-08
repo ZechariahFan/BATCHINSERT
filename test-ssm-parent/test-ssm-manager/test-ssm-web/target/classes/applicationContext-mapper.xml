@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:p="http://www.springframework.org/schema/p"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+        xmlns:mvc="http://www.springframework.org/schema/mvc"
+        xsi:schemaLocation="
+       http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop 
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx 
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- 开发SpringMvc的配置文件 -->
+    <!-- 开启组件扫描 -->
+    <context:component-scan base-package="com.dj.mapper"></context:component-scan>
+    <!-- 加载jdbc.properties配置文件 -->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <!-- 配置C3P0连接池 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="user" value="${fatfa.jdbc.username}"></property>
+        <property name="password" value="${fatfa.jdbc.password}"></property>
+        <property name="jdbcUrl" value="${fatfa.jdbc.url}"></property>
+        <property name="driverClass" value="${fatfa.jdbc.driver}"></property>
+        <property name="maxPoolSize" value="${dbcp.maxActive}"></property>
+        <property name="initialPoolSize" value="${dbcp.maxIdle}"></property>
+
+    </bean>
+
+    <!-- 整合Mybatis -->
+    <!-- 配置SqlSessionFactory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 注入dataSource -->
+        <property name="dataSource" ref="dataSource"></property>
+        <!-- 配置引入Mapper文件 -->
+        <property name="mapperLocations" value="classpath:cn/spring/mapper/*.xml"></property>
+        <!-- 配置别名  别名默认是类名不区分大小写-->
+        <property name="typeAliasesPackage" value="com.dj.model"></property>
+    </bean>
+
+    <!-- 配置mapper扫描器  自动扫描某个父包下面的mapper接口 自动生成实现类-->
+    <!-- 生成的实现类会交给Spring管理 然后可以通过类名的首字母小写获取 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 配置扫描某个包下面的接口  如果需要配置多个包  中间用,或者;隔开 -->
+        <property name="basePackage" value="com.dj.mapper"></property>
+        <!-- 注入 sqlSessionFactory 如果你只配置一个数据源 可以不注入  推荐写上 -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+    </bean>
+</beans>
